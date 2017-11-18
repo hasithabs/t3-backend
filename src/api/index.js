@@ -1,5 +1,8 @@
 import { Router } from 'express'
 
+import card from './card'
+import passenger from './passenger'
+
 const router = new Router()
 
 /**
@@ -26,4 +29,7 @@ const router = new Router()
  * @apiParam {String[]} [fields] Fields to be returned.
  */
 
+router.use('/cards', card)
+router.use('/passengers', passenger)
+ 
 export default router
