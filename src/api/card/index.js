@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 
 /* GET SINGLE CARD BY ID */
 router.get('/:id', function(req, res, next) {
-  Card.findById(req.params.id, function (err, post) {
+  Card.findOne({card_number: req.params.id}, function (err, post) {
     if (err) {
       res.status(400).json({status: 400, error: "invalid id - " + req.params.id});
       return next(err);
