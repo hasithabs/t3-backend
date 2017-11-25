@@ -9,7 +9,7 @@ var passengerSchema = new mongoose.Schema({
 
   name:{type:String,required:true},
 
-  dOB:{type:Date},
+  dob:{type:Date},
 
   addr:{type:String,required:true},
 
