@@ -64,8 +64,10 @@ router.put('/:id', function(req, res, next) {
 
 /* DELETE BUSROUTE */
 router.delete('/:id', function(req, res, next) {
-  Bus.findOneAndRemove({id: req.params.id}, req.body, function (err, results) {
-    if (err) return next(err);
+  Bus.deleteOne({id: req.params.id}, function (err, results) {
+    if (err) {
+      return next(err);
+    }
     res.json({status: 200, content: results});
   });
 });

@@ -64,7 +64,7 @@ router.put('/:id', function(req, res, next) {
 
 /* DELETE BUSROUTE */
 router.delete('/:id', function(req, res, next) {
-  BusRoute.findOneAndRemove({id: req.params.id}, req.body, function (err, results) {
+  BusRoute.deleteOne({id: req.params.id}, req.body, function (err, results) {
     if (err) return next(err);
     res.json({status: 200, content: results});
   });
