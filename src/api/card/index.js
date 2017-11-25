@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 /* GET SINGLE CARD BY ID */
 router.get('/:id', function(req, res, next) {
   Card.find({card_number: req.params.id}, function (err, results) {
-    if (err || results == null) {
+    if (err) {
       res.status(400).json({status: 400, error: "invalid id - " + req.params.id});
       return next(err);
     }
@@ -44,10 +44,9 @@ router.post('/', function(req, res, next) {
 
 /* UPDATE CARD */
 router.put('/:id', function(req, res, next) {
-  Card.findByIdAndUpdate(req.params.id, req.body, function (err, results) {
+  Card.findOneAndUpdate({card_number: req.params.id}, req.body, {new: true},function (err, results) {
     if (err) {
-      res.status(232).json(err);
-      // res.status(400).json({status: 400, error: "invalid id - " + req.params.id});
+      res.status(400).json({status: 400, error: "invalid id - " + req.params.id});
       return next(err);
     }
     res.json({status: 200, content: results});

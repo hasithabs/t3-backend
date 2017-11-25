@@ -2,19 +2,19 @@ import mongoose, { Schema } from 'mongoose'
 import mongooseKeywords from 'mongoose-keywords'
 import { env } from '../../config'
 
-var BusRouteSchema = new mongoose.Schema({
+var TripSchema = new mongoose.Schema({
   id: { type: Number, required: true, unique: true },
+  bus_id: { type: Number, required: true },
   route_id: { type: Number, required: true },
-  route_name: { type: String, required: true },
-  stopping_count: { type: Number, required: true },
-  start: { type: String, required: true },
-  end: { type: String, required: true },
+  rate_per_km: { type: Number, required: true },
+  passenger_count: { type: Number, required: true },
+  total_income: { type: Number, required: true },
   created_at: Date,
   updated_at: Date
 }, { versionKey: false });
 
 // on every save, add the date
-BusRouteSchema.pre('save', function(next) {
+TripSchema.pre('save', function(next) {
   var currentDate = new Date();
   this.updated_at = currentDate;
 
@@ -23,4 +23,4 @@ BusRouteSchema.pre('save', function(next) {
   next();
 });
 
-module.exports = mongoose.model('Route', BusRouteSchema);
+module.exports = mongoose.model('Trips', TripSchema);

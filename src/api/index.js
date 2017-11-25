@@ -4,6 +4,7 @@ import card from './card'
 import passenger from './passenger'
 import route from './route'
 import bus from './bus'
+import trip from './trip'
 
 const router = new Router()
 
@@ -35,5 +36,6 @@ router.use('/cards', card)
 router.use('/passengers', passenger)
 router.use('/routes', route)
 router.use('/buses', bus)
- 
+router.use('/trips', trip)
+
 export default router
